@@ -4,9 +4,13 @@ orbs:
 jobs:
   install-dependencies:
     docker:
-      - image: cimg/python:3.9
+      - image: continuumio/miniconda3
     steps:
       - checkout
+      - run:
+          name: Install Node.js
+          command: |
+            conda install -c conda-forge nodejs
       - run:
           name: Install dependencies
           command: |

@@ -3,14 +3,14 @@ orbs:
   python: circleci/python@2
 jobs:
   install-dependencies:
-    docker:
-      - image: continuumio/miniconda3
+    machine:
+      image: ubuntu-2004:202010-01
     steps:
       - checkout
       - run:
           name: Install Node.js
           command: |
-            conda install -c conda-forge nodejs
+            sudo apt-get update && sudo apt-get install -y nodejs npm
       - run:
           name: Install dependencies
           command: |
